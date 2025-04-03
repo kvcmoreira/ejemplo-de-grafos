@@ -1,0 +1,50 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Definir la matriz de adyacencia para la red de metro
+        int[,] matrizAdyacencia =
+        {
+            { 0, 1, 1, 0 }, // A
+            { 1, 0, 0, 1 }, // B
+            { 1, 0, 0, 1 }, // C
+            { 0, 1, 1, 0 }  // D
+        };
+
+        string[] estaciones = { "A", "B", "C", "D" };
+
+        // Imprimir la matriz de adyacencia
+        Console.WriteLine("Matriz de Adyacencia de la Red de Metro:");
+        Console.Write("    ");
+        foreach (var estacion in estaciones)
+        {
+            Console.Write(estacion + " ");
+        }
+        Console.WriteLine();
+
+        for (int i = 0; i < matrizAdyacencia.GetLength(0); i++)
+        {
+            Console.Write(estaciones[i] + " ");
+            for (int j = 0; j < matrizAdyacencia.GetLength(1); j++)
+            {
+                Console.Write(" " + matrizAdyacencia[i, j] + " ");
+            }
+            Console.WriteLine();
+        }
+
+        // Mostrar las conexiones
+        Console.WriteLine("\nConexiones entre estaciones:");
+        for (int i = 0; i < matrizAdyacencia.GetLength(0); i++)
+        {
+            for (int j = i + 1; j < matrizAdyacencia.GetLength(1); j++)
+            {
+                if (matrizAdyacencia[i, j] == 1)
+                {
+                    Console.WriteLine(estaciones[i] + " <--> " + estaciones[j]);
+                }
+            }
+        }
+    }
+}
